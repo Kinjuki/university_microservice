@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,7 @@ public class StudentRecordsController {
 			Statement stmt = con.createStatement();
 			
 			PreparedStatement pst = con.prepareStatement("insert into students(name,sex,dob,phone_number,email) values(?,?,?,?,?);");
-			pst.setString(1,name);
+			pst.setString(1, name);
 			pst.setString(2, sex);
 			pst.setString(3, dob);
 			pst.setString(4, phone_number);
@@ -45,5 +46,10 @@ public class StudentRecordsController {
 
 		return "redirect:/";
 		
+	}
+
+    @GetMapping("/students")
+	public String getCustomers(Model model) {
+		return "allstudents";
 	}
 }
