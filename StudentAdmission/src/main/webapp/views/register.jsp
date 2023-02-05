@@ -52,7 +52,6 @@
             <select class="form-control" id="sex">
               <option>Male</option>
               <option>Female</option>
-              <option>Other</option>
             </select>
           </div>
           <div class="form-group">
