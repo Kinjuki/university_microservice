@@ -33,31 +33,29 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <h2 class="text-center mb-5">Student Register Form</h2>
-        <form>
+        <form action="addstudent" method="POST">
           <div class="form-group">
             <label for="fullName">Full Name</label>
-            <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+            <input type="text" name="name" class="form-control" id="fullName" placeholder="Enter full name">
           </div>
           <div class="form-group">
             <label for="sex">Sex</label>
-            <select class="form-control" id="sex">
-              <option>Male</option>
-              <option>Female</option>
+            <select class="form-control" name="sex" id="sex">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
             </select>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" id="dob">
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number">
+            <input type="text" name="phone_number" class="form-control" id="phoneNumber" placeholder="Enter phone number">
           </div>
           <div class="form-group">
-            <label for="course">Course</label>
-            <select class="form-control" id="course">
-              <option>Computer Science</option>
-              <option>Business Administration</option>
-              <option>Engineering</option>
-              <option>Medicine</option>
-              <option>Law</option>
-            </select>
+            <label for="Email">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
