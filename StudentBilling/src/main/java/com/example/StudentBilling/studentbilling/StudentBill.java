@@ -9,4 +9,10 @@ public class StudentBill {
    public String getStudentPage(){
     return "studentbills";
    }
+
+   //Write function too check student from student admmision service
+   //Get student from admission service
+
+   
+
 }
