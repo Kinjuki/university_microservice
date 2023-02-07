@@ -12,4 +12,9 @@ public class AccountController {
     public String homePage(){
         return "home";
     }
+
+    @GetMapping("/allhostels")
+    public String allhostelPage(){
+        return "allhostels";
+    }
 }

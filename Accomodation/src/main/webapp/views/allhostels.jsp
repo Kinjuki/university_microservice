@@ -17,38 +17,35 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
           <h2 class="text-center mb-5">Add Accommodation</h2>
-          <form>
-            <div class="form-group">
-              <label for="hostel">Hostel</label>
-              <select class="form-control" id="">
-                <option selected disabled>Select Hostel</option>
-                <option value="Mkwawa">Mkwawa</option>
-                <option value="Mirambo">Mirambo</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="roomType">Room Type</label>
-              <select class="form-control" id="roomType">
-                <option selected disabled>Select Room Type</option>
-                <option value="single">Single</option>
-                <option value="double">Double</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="roomNumber">Room Number</label>
-              <input type="text" class="form-control" id="roomNumber" placeholder="Enter room number">
-            </div>
-            <div class="form-group">
-              <label for="checkInDate">Check-in Date</label>
-              <input type="date" class="form-control" id="checkInDate">
-            </div>
-            <div class="form-group">
-              <label for="checkOutDate">Check-out Date</label>
-              <input type="date" class="form-control" id="checkOutDate">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/allhostels" class="btn btn-success">All Hostels</a>
-          </form>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
