@@ -1,7 +1,3 @@
-<%@page import="java.sql.*"%>
-<%@page import="java.util.*"%>
-<%@page import="java.text.*"%>
-
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>UMS | All Courses</title>
+  <title>UMS | Program Registration</title>
 </head>
 
 <body>
@@ -36,50 +32,23 @@
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h2 class="text-center mb-5">University Course Registration</h2>
-        <a href="/">
-            <button class="btn btn-primary my-2">Add Course</button>
-        </a>
-        <table class="table table-bordered table-sm">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">NAME</th>
-                <th scope="col">CODE</th>
-                <th scope="col">DEPARTMENT</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <%
-					try {
-						String url = "jdbc:mysql://localhost:3306/courseregistration";
-						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection con = DriverManager.getConnection(url, "root", "");
-						Statement stmt = con.createStatement();
-						ResultSet rs = stmt.executeQuery("select * from courses");
-					%>
-					<%
-					while (rs.next()) {
-					%>
-
-              <tr>
-                <td><%= rs.getString(1) %></td>
-                <td><%= rs.getString(2) %></td>
-                <td><%= rs.getString(3) %></td>
-                <td><%= rs.getString(4) %></td>
-              </tr>
-            <% } %>
-              
-            </tbody>
-          </table>
-
-
-          <%
-		} catch (Exception ex) {
-		System.out.println("Exception Occurred:: " + ex.getMessage());
-		}
-		%>
+        <h2 class="text-center mb-5">University Program Registration</h2>
+        <form action="addprogram" method="POST">
+          <div class="form-group">
+            <label for="courseName">Program</label>
+            <input type="text" name="name" class="form-control" placeholder="Enter program name" required>
+          </div>
+          <div class="form-group">
+            <label for="courseCode">Department</label>
+            <input type="text" name="dapartment" class="form-control" placeholder="Enter enter department" required>
+          </div>
+          <div class="form-group">
+            <label for="department">Facult</label>
+            <input type="text" name="facult" class="form-control" placeholder="Enter facult">
+          </div>
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <a href="/courses" class="btn btn-success">All Courses</a>
+        </form>
       </div>
     </div>
   </div>

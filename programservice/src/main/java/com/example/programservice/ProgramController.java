@@ -1,4 +1,4 @@
-package com.example.CourseRegistration.couseregistration;
+package com.example.programservice;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,27 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
-public class CourseRegistration {
+public class ProgramController {
     @GetMapping("/")
-   public String courseRegisterPage(){
+   public String programRegisterPage(){
     return "register";
    } 
 
-   @RequestMapping(value = "addcourse", method=RequestMethod.POST)
-	public String addCustomer(@RequestParam("name") String name,
-	@RequestParam("code") String code,
-	@RequestParam("department") String department){
+   @RequestMapping(value = "addprogram", method=RequestMethod.POST)
+	public String addProgram(@RequestParam("name") String name,
+	@RequestParam("dapartment") String dapartment,
+	@RequestParam("facult") String facult){
 
 		try
 		{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/courseregistration","root","");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/programregistration","root","");
 			Statement stmt = con.createStatement();
-			
-			PreparedStatement pst = con.prepareStatement("insert into courses(name,code,department) values(?,?,?);");
+			PreparedStatement pst = con.prepareStatement("insert into programs(name,department,facult) values(?,?,?);");
 			pst.setString(1, name);
-			pst.setString(2, code);
-			pst.setString(3, department);
+			pst.setString(2, dapartment);
+			pst.setString(3, facult);
 			int rowsAffected = pst.executeUpdate();
 		}
 		catch(Exception e)
@@ -45,8 +45,8 @@ public class CourseRegistration {
 	}
 
 
-    @GetMapping("/courses")
+    @GetMapping("/programs")
 	public String getCourses(Model model) {
-		return "allcourses";
+		return "allprograms";
 	}
 }
