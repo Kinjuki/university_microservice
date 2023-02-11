@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class StudentRecordsController {
-    @GetMapping("/")
+    @GetMapping("/register")
    public String getRegisterPage(){
     return "register";
    }
@@ -44,11 +44,10 @@ public class StudentRecordsController {
 			System.out.println("Exception:"+e);
 		}
 
-		return "redirect:/?status=added";
-		
+		return "redirect:/register?status=added";
 	}
 
-    @GetMapping("/students")
+    @GetMapping("/")
 	public String getCustomers(Model model) {
 		return "allstudents";
 	}
