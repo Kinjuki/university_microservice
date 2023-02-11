@@ -23,7 +23,16 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/allstudentsrecords">All students</a>
+            <a class="nav-link" href="#">All student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Graduate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">PostGraduate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link login" href="/login">Login</a>
           </li>
         </ul>
       </div>
@@ -31,19 +40,9 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-8">
-          <p class="m-3">
-            Welcome to the University Admissions website! We are excited to offer you a streamlined and user-friendly platform for applying to our esteemed institution. Here you will find all the necessary information and resources to guide you through the admission process, from submitting your application to receiving your offer of admission. Thank you for considering us, and we look forward to reviewing your application!
-          </p>
-          <p>
-            <h5>Click here to <a href="/register">register account</a> </h5>
-          </p>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-sm-8 mx-auto">
           <p>
-            <h2>All Admitted Students</h2>
+            <h2>All Students</h2>
           </p>
           <table class="table table-bordered">
             <thead>
@@ -52,7 +51,6 @@
                 <th scope="col">Fullname</th>
                 <th scope="col">Sex</th>
                 <th scope="col">Phone number</th>
-                <th>Programme</th>
                 <th scope="col">DoB</th>
               </tr>
             </thead>
