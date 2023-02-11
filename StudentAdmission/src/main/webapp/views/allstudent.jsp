@@ -25,9 +25,6 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">All student records</a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -35,6 +32,16 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-8 mx-auto">
+          <%
+    String status = request.getParameter("status");
+      if (status != null) { %>
+      <div class="alert alert-primary" role="alert">
+        Student added successfully
+      </div>
+
+      <%
+          }
+      %>
           <p>
             <h2>All Students</h2>
           </p>
@@ -69,7 +76,7 @@
                 <td><%= rs.getString(5) %></td>
                 <td><%= rs.getString(4) %></td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm">Admit</a >
+                    <a href="/admitstudent/<%= rs.getString(1) %>/<%= rs.getString(2) %>" class="btn btn-primary btn-sm">Admit</a >
                 </td>
               </tr>
               <% } %>

@@ -1,3 +1,6 @@
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.*"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,9 +38,6 @@
           <p class="m-3">
             Welcome to the University Admissions website! We are excited to offer you a streamlined and user-friendly platform for applying to our esteemed institution. Here you will find all the necessary information and resources to guide you through the admission process, from submitting your application to receiving your offer of admission. Thank you for considering us, and we look forward to reviewing your application!
           </p>
-          <p>
-            <h5>Click here to <a href="/register">register account</a> </h5>
-          </p>
         </div>
       </div>
       <div class="row">
@@ -50,21 +50,38 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Fullname</th>
-                <th scope="col">Sex</th>
-                <th scope="col">Phone number</th>
-                <th>Programme</th>
-                <th scope="col">DoB</th>
+                <th scope="col">Programme</th>
+                <th scope="col">Years</th>
               </tr>
             </thead>
             <tbody>
+              <%
+                try {
+                    String url = "jdbc:mysql://localhost:3306/studentadmission";
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(url, "root", "");
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery("select * from students");
+                %>
+                <%
+                int count = 1;
+                while (rs.next()) {
+                %>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark Donald</td>
-                <td>M</td>
-                <td>0783123008</td>
+                <th scope="row"><%= count++ %></th>
+                <td><%= rs.getString(3) %></td>
+                <td><%= rs.getString(4) %></td>
+                <td><%= rs.getString(5) %></td>
               </tr>
+              <% } %>
             </tbody>
           </table>
+
+          <%
+		} catch (Exception ex) {
+		System.out.println("Exception Occurred:: " + ex.getMessage());
+		}
+		%>
           
         </div>
       </div>
