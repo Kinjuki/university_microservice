@@ -1,3 +1,7 @@
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.*"%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,36 +20,58 @@
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <h2 class="text-center mb-5">Add Accommodation</h2>
+          <%
+    String status = request.getParameter("status");
+      if (status != null) { %>
+      <div class="alert alert-primary" role="alert">
+        Student assigned Mkwawa
+      </div>
+
+      <%
+          }
+      %>
+          <h2 class="text-center mb-5">All Admitted Students</h2>
+          <a href="/" class="btn btn-primary my-2">all Accomodation</a>
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Student</th>
+                <th scope="col">Program</th>
+                <th scope="col">Years</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
+              <%
+                try {
+                    String url = "jdbc:mysql://localhost:3306/studentadmission";
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(url, "root", "");
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery("select * from students");
+                %>
+                <%
+                int count = 1;
+                while (rs.next()) {
+                %>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row"><%= count++ %></th>
+                <td><%= rs.getString(3) %></td>
+                <td><%= rs.getString(4) %></td>
+                <td><%= rs.getString(5) %></td>
+                <td>
+                  <a href="/add/<%= rs.getString(1) %>/<%= rs.getString(3) %>" class="btn btn-primary">add accomodation</a>
+                </td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              <% } %>
             </tbody>
           </table>
+          <%
+		} catch (Exception ex) {
+		System.out.println("Exception Occurred:: " + ex.getMessage());
+		}
+		%>
         </div>
       </div>
     </div>

@@ -1,3 +1,7 @@
+<%@page import="java.sql.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.*"%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,44 +15,50 @@
     <title>University System | Accomodation</title>
   </head>
   <body>
-    
 
     <div class="container mt-5">
       <div class="row justify-content-center">
-        <div class="col-md-6">
-          <h2 class="text-center mb-5">Add Accommodation</h2>
-          <form>
-            <div class="form-group">
-              <label for="hostel">Hostel</label>
-              <select class="form-control" id="">
-                <option selected disabled>Select Hostel</option>
-                <option value="Mkwawa">Mkwawa</option>
-                <option value="Mirambo">Mirambo</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="roomType">Room Type</label>
-              <select class="form-control" id="roomType">
-                <option selected disabled>Select Room Type</option>
-                <option value="single">Single</option>
-                <option value="double">Double</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="roomNumber">Room Number</label>
-              <input type="text" class="form-control" id="roomNumber" placeholder="Enter room number">
-            </div>
-            <div class="form-group">
-              <label for="checkInDate">Check-in Date</label>
-              <input type="date" class="form-control" id="checkInDate">
-            </div>
-            <div class="form-group">
-              <label for="checkOutDate">Check-out Date</label>
-              <input type="date" class="form-control" id="checkOutDate">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/allhostels" class="btn btn-success">All Hostels</a>
-          </form>
+        <div class="col-md-8">
+          <h2 class="text-center mb-5">Student Accomodation</h2>
+          <a href="/allaccomodation" class="btn btn-primary my-2">Add Accomodation</a>
+          <table class="table table-bordered table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fullname</th>
+                  <th scope="col">Hostel</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+                <%
+            try {
+              String url = "jdbc:mysql://localhost:3306/accomodation";
+              Class.forName("com.mysql.cj.jdbc.Driver");
+              Connection con = DriverManager.getConnection(url, "root", "");
+              Statement stmt = con.createStatement();
+              ResultSet rs = stmt.executeQuery("select * from accomodations");
+            %>
+            <%
+            int count = 1;
+            while (rs.next()) {
+            %>
+  
+                <tr>
+                  <td><%= count++ %></td>
+                  <td><%= rs.getString(3) %></td>
+                  <td><%= rs.getString(4) %></td>
+                </tr>
+              <% } %>
+                
+              </tbody>
+            </table>
+  
+            <%
+      } catch (Exception ex) {
+      System.out.println("Exception Occurred:: " + ex.getMessage());
+      }
+      %>
         </div>
       </div>
     </div>
