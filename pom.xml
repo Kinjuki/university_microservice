@@ -8,14 +8,27 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.example</groupId>
 	<artifactId>UMS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>UMS</name>
-	<description>Demo project for Spring Boot</description>
+	<description>University anageent microservices</description>
+
+	<!-- <modules>
+		<module>Accommodation</module>
+		<module>CourseRegistration</module>
+		<module>StudentAdmssion</module>
+		<module>StudentBilling</module>
+		<module>StudentRecords</module>
+	</modules> -->
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
+	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
