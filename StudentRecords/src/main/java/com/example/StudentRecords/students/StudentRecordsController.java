@@ -44,7 +44,7 @@ public class StudentRecordsController {
 			System.out.println("Exception:"+e);
 		}
 
-		return "redirect:/";
+		return "redirect:/?status=added";
 		
 	}
 

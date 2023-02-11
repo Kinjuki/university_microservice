@@ -33,6 +33,12 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <h2 class="text-center mb-5">Student Register Form</h2>
+        <h3><%
+          String status = request.getParameter("status");
+          if (status != null) {
+            out.println("Student added successfuly");
+          }
+        %></h3>
         <form action="addstudent" method="POST">
           <div class="form-group">
             <label for="fullName">Full Name</label>
